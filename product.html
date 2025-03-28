@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - ShopEasy</title>
+    <style>
+     
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    /* Black and Purple theme base colors */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #9370db;
+    --accent-color: #8a2be2;
+    --accent-hover: #a64dff;
+    --border-color: #2a2a2a;
+    --shadow-color: rgba(138, 43, 226, 0.2);
+    
+    /* Additional theme colors */
+    --success-color: #7E3FFF;
+    --danger-color: #ff3366;
+    --warning-color: #ff6b6b;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-primary), #0e0e1b);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-weight: 400;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+  /* Header styles */
+  header {
+            background-color: var(--bg-secondary);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color:var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-color);
+        }
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.75rem;
+        }
+/*experiment*/
+/* Pulse animation on hover */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  animation: pulse 3s infinite;
+}
+
+/* Text glow effect */
+@keyframes glow {
+  0% { text-shadow: 0 0 0px rgba(83, 186, 230, 0.5); }
+  50% { text-shadow: 0 0 10px rgba(116, 180, 243, 0.8); }
+  100% { text-shadow: 0 0 0px rgba(111, 175, 235, 0.5); }
+}
+
+a:hover {
+  animation: glow 5s infinite;
+}
+/* Products Section */
+.products-container {
+    padding: 3rem 2rem;
+}
+
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    color: var(--text-primary);
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+}
+
+.filter-select {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.products-layout {
+    display: flex;
+    gap: 2rem;
+}
+
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--bg-secondary), #1f1f2f);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    padding: 1rem;
+}
+
+.sidebar-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.category-list {
+    list-style: none;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.category-item {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-secondary);
+}
+
+.category-item:last-child {
+    border-bottom: none;
+}
+
+.category-item:hover, 
+.category-item.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.product-grid-container {
+    flex-grow: 1;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background: linear-gradient(135deg, var(--bg-secondary), #1f1f2f);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(138, 43, 226, 0.3);
+}
+
+.product-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.product-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.product-price {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.add-to-cart {
+    background: linear-gradient(135deg, #6a0dad, #4B0082);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    background-size: 200% auto;
+    background-position: right center;
+}
+
+.add-to-cart:hover {
+    background-position: left center;
+    background: linear-gradient(135deg, #8A2BE2, #5D3FD3);
+}
+
+/* Cart Overlay */
+.overlay-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 999;
+}
+
+.overlay-backdrop.active {
+    display: block;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--bg-secondary), #1f1f2f);
+    box-shadow: -5px 0 15px var(--shadow-color);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.cart-overlay.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.cart-items {
+    padding: 1rem;
+    min-height: 200px;
+}
+
+.cart-item {
+    display: flex;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.cart-item-price {
+    color: var(--text-primary-);
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.quantity-btn {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: var(--text-secondary);
+}
+
+.quantity-btn:hover {
+    background-color: var(--border-color);
+}
+
+.item-quantity {
+    padding: 0 0.5rem;
+    color: var(--text-primary);
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: var(--danger-color);
+    cursor: pointer;
+    margin-left: auto;
+    transition: color 0.2s;
+}
+
+.remove-item:hover {
+    color: #ff6b6b;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    font-weight: bold;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.checkout-btn {
+    display: block;
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    padding: 0.8rem;
+    background: linear-gradient(135deg, #6A5ACD, #483D8B);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-align: center;
+    background-size: 200% auto;
+    background-position: right center;
+}
+
+.checkout-btn:hover {
+    background-position: left center;
+    background: linear-gradient(135deg, #7B68EE, #6A5ACD);
+}
+
+
+ /* Footer styles */
+ footer {
+            background-color: var(--bg-secondary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-links a {
+            color:var(--accent-color);
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+
+
+
+.mobile-menu-btn {
+    display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .products-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    
+    .products-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .filters {
+        margin-top: 1rem;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    
+    .filter-select {
+        flex-grow: 1;
+        min-width: 150px;
+    }
+    
+    .cart-overlay {
+        width: 100%;
+        right: -100%;
+    }
+    
+    nav ul {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    nav.active ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, var(--bg-secondary), #1f1f2f);
+        padding: 1rem;
+        box-shadow: 0 4px 6px var(--shadow-color);
+    }
+    
+    nav.active ul li {
+        margin: 1rem 0;
+    }
+}
+
+/* Optional: Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Infinity<span>Gearz</span></div>
+        <nav>
+            <button class="mobile-menu-btn">☰</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="real about us.html">About</a></li>
+                <li><a href="contact us.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" id="cart-icon">
+            🛒 <span class="cart-count" id="cart-count">0</span>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="products-container">
+        <div class="products-header">
+            <h1 class="page-title">All Products</h1>
+            <div class="filters">
+               
+                </select>
+            </div>
+        </div>
+        
+        <div class="products-layout">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3 class="sidebar-title">Categories</h3>
+                <ul class="category-list">
+                    <li class="category-item active">All Categories</li>
+                    <li class="category-item">Electronics</li>
+                    <li class="category-item">Audio & Headphones</li>
+                    <li class="category-item">Computers</li>
+                    <li class="category-item">Accessories</li>
+                    <li class="category-item">Wearables</li>
+                </ul>
+                
+            </div>
+            
+            <!-- Product Grid Container -->
+            <div class="product-grid-container">
+                <div class="product-grid" id="product-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card" data-price="99.99" data-name="Premium Headphones">
+                       <a href="headphone page.html">
+                        <img src="ChatGPT Image Mar 28, 2025, 07_29_34 PM.png" alt="Premium Headphones" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Premium Headphones</h3>
+                            <p class="product-description">Wireless over-ear headphones with noise cancellation.</p>
+                            <p class="product-price">₹3000</p></a>
+                            <button class="add-to-cart" data-id="1" data-name="Premium Headphones" data-price="3000" data-image="/api/placeholder/400/300">Add to Cart</button>
+                        
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card" data-price="39.99" data-name="Wireless Mouse">
+                      <a href="Mouse page.html">
+                        <img src="mouse.jpeg" alt="Wireless Mouse" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Wireless Mouse</h3>
+                            <p class="product-description">Ergonomic wireless mouse with long battery life.</p>
+                            <p class="product-price">₹2300</p></a>
+                            <button class="add-to-cart" data-id="2" data-name="Wireless Mouse" data-price="2300" data-image="/api/placeholder/400/300">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card" data-price="129.99" data-name="Smart Watch">
+                       <a href="watch page.html">
+                        <img src="watch.jpeg" alt="Smart Watch" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Smart Watch</h3>
+                            <p class="product-description">Modern smartwatch with health monitoring features.</p>
+                            <p class="product-price">₹2100</p></a>
+                            <button class="add-to-cart" data-id="3" data-name="Smart Watch" data-price="2100" data-image="/api/placeholder/400/300">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                                     
+                  
+                    
+                    <!-- Product id 6 -->
+                    <div class="product-card" data-price="89.99" data-name="Mechanical Keyboard">
+                      <a href="Keyboard page.html">
+                        <img src="keyboard.jpeg" alt="Mechanical Keyboard" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">Mechanical Keyboard</h3>
+                            <p class="product-description">RGB backlit mechanical keyboard for gaming.</p>
+                            <p class="product-price">₹3400</p></a>
+                            <button class="add-to-cart" data-id="6" data-name="Mechanical Keyboard" data-price="3400" data-image="/api/placeholder/400/300">Add to Cart</button>
+                        </div>
+                    </div>
+                                       
+                                
+                    <!-- Product id 11 -->
+                    <div class="product-card" data-price="54.99" data-name="HD Webcam">
+                      <a href="HD cam.html">
+                        <img src="hd cam.jpeg" alt="Webcam" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">HD Webcam</h3>
+                            <p class="product-description">1080p webcam for clear video calls.</p>
+                            <p class="product-price">₹1300</p></a>
+                            <button class="add-to-cart" data-id="11" data-name="HD Webcam" data-price="1300" data-image="/api/placeholder/400/300">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Product id 12 -->
+                    <div class="product-card" data-price="109.99" data-name="External SSD">
+                       <a href="ssd page.html">
+                        <img src="ssd.jpeg" alt="External SSD" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">External SSD</h3>
+                            <p class="product-description">500GB portable solid state drive.</p>
+                            <p class="product-price">₹999</p></a>
+                            <button class="add-to-cart" data-id="12" data-name="External SSD" data-price="999" data-image="/api/placeholder/400/300">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 InfinityGearz. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Support</a>
+            <a href="real about us.html">About us</a>
+            <a href="contact us.html">Contact Us</a>
+        </div>
+    </footer>
+
+     <!-- Cart Overlay -->
+     <div class="overlay-backdrop" id="overlay-backdrop"></div>
+     <div class="cart-overlay" id="cart-overlay">
+         <div class="cart-header">
+             <h3>Your Cart</h3>
+             <button class="close-cart" id="close-cart">✕</button>
+         </div>
+         <div class="cart-items" id="cart-items">
+             <!-- Cart items will be dynamically added here -->
+         </div>
+         <div class="cart-total">
+             <span>Total:</span>
+             <span id="cart-total-amount">$0.00</span>
+         </div>
+         <button class="checkout-btn">Proceed to Checkout</button>
+     </div>
+ 
+     <script>
+         // Cart functionality
+         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Initialize cart count
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count');
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+        }
+        
+        // Update cart UI
+        function updateCartUI() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotalAmount = document.getElementById('cart-total-amount');
+            
+            // Clear cart items
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Your cart is empty.</p>';
+                cartTotalAmount.textContent = '₹0.00';
+                return;
+            }
+            
+            // Add items to cart
+            let total = 0;
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">₹${item.price}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn decrease-quantity" data-id="${item.id}">-</button>
+                            <span class="item-quantity">${item.quantity}</span>
+                            <button class="quantity-btn increase-quantity" data-id="${item.id}">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item" data-id="${item.id}">✕</button>
+                `;
+                cartItems.appendChild(cartItem);
+                
+                total += item.price * item.quantity;
+            });
+            
+            // Update total
+            cartTotalAmount.textContent = `₹${total.toFixed(2)}`;
+            
+            // Add event listeners to quantity buttons
+            const decreaseButtons = document.querySelectorAll('.decrease-quantity');
+            const increaseButtons = document.querySelectorAll('.increase-quantity');
+            const removeButtons = document.querySelectorAll('.remove-item');
+            
+            decreaseButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-id');
+                    decreaseQuantity(id);
+                });
+            });
+            
+            increaseButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-id');
+                    increaseQuantity(id);
+                });
+            });
+            
+            removeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-id');
+                    removeItem(id);
+                });
+            });
+        }
+        
+        // Add item to cart
+        function addToCart(id, name, price, image) {
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id,
+                    name,
+                    price: parseFloat(price),
+                    image,
+                    quantity: 1
+                });
+            }
+            
+            // Save cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update UI
+            updateCartCount();
+            updateCartUI();
+        }
+        
+        // Increase item quantity
+        function increaseQuantity(id) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += 1;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                updateCartUI();
+            }
+        }
+        
+        // Decrease item quantity
+        function decreaseQuantity(id) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity -= 1;
+                
+                if (item.quantity === 0) {
+                    removeItem(id);
+                    return;
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                updateCartUI();
+            }
+        }
+        
+        // Remove item from cart
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartUI();
+        }
+        
+        // Toggle cart overlay
+        function toggleCart() {
+            const cartOverlay = document.getElementById('cart-overlay');
+            const overlayBackdrop = document.getElementById('overlay-backdrop');
+            
+            cartOverlay.classList.toggle('active');
+            overlayBackdrop.classList.toggle('active');
+            
+            if (cartOverlay.classList.contains('active')) {
+                updateCartUI();
+            }
+        }
+        
+        // Add event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize cart
+            updateCartCount();
+            
+            // Add to cart buttons
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-id');
+                    const name = button.getAttribute('data-name');
+                    const price = button.getAttribute('data-price');
+                    const image = button.getAttribute('data-image');
+                    
+                    addToCart(id, name, price, image);
+                    
+                    // Show cart overlay
+                    toggleCart();
+                });
+            });
+            
+            // Cart icon click
+            const cartIcon = document.getElementById('cart-icon');
+            cartIcon.addEventListener('click', toggleCart);
+            
+            // Close cart button
+            const closeCart = document.getElementById('close-cart');
+            closeCart.addEventListener('click', toggleCart);
+            
+            // Backdrop click
+            const overlayBackdrop = document.getElementById('overlay-backdrop');
+            overlayBackdrop.addEventListener('click', toggleCart);
+            
+            // Mobile menu
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+        });
+     </script>
+     <script>
+         // Category functionality
+ document.addEventListener('DOMContentLoaded', () => {
+     // Get all category items
+     const categoryItems = document.querySelectorAll('.category-item');
+     // Get all product cards
+     const productCards = document.querySelectorAll('.product-card');
+     
+     // Create a data structure to store product categories
+     // In a real application, this would come from a backend
+     const productCategories = {
+         '1': 'Audio & Headphones',  // Premium Headphones
+         '2': 'Accessories',         // Wireless Mouse
+         '3': 'Wearables',           // Smart Watch
+         '4': 'Accessories',         // Portable Charger
+         '5': 'Audio & Headphones',  // Bluetooth Speaker
+         '6': 'Accessories',         // Mechanical Keyboard
+         '7': 'Audio & Headphones',  // Wireless Earbuds
+         '8': 'Accessories',         // USB-C Hub
+         '9': 'Accessories',         // Laptop Stand
+         '10': 'Wearables',          // Fitness Tracker
+         '11': 'Electronics',        // HD Webcam
+         '12': 'Computers'           // External SSD
+     };
+     
+     // Add category data attributes to products
+     productCards.forEach(card => {
+         const addToCartButton = card.querySelector('.add-to-cart');
+         const productId = addToCartButton.getAttribute('data-id');
+         const category = productCategories[productId];
+         
+         // Add category as a data attribute to the product card
+         card.setAttribute('data-category', category);
+     });
+     
+     // Add click event listeners to category items
+     categoryItems.forEach(item => {
+         item.addEventListener('click', () => {
+             // Remove active class from all category items
+             categoryItems.forEach(cat => cat.classList.remove('active'));
+             
+             // Add active class to clicked category
+             item.classList.add('active');
+             
+             // Get the category text
+             const selectedCategory = item.textContent.trim();
+             
+             // Filter products based on category
+             filterProducts(selectedCategory);
+         });
+     });
+     
+     // Function to filter products based on selected category
+     function filterProducts(category) {
+         // Show all products if "All Categories" is selected
+         if (category === 'All Categories') {
+             productCards.forEach(card => {
+                 card.style.display = 'block';
+             });
+             return;
+         }
+         
+         // Otherwise, filter products by category
+         productCards.forEach(card => {
+             const productCategory = card.getAttribute('data-category');
+             
+             if (productCategory === category) {
+                 card.style.display = 'block';
+             } else {
+                 card.style.display = 'none';
+             }
+         });
+     }
+     
+     // Initialize with "All Categories" selected
+     filterProducts('All Categories');
+ });
+     </script>
+     </body>
+     </html>
