@@ -714,6 +714,240 @@ footer {
 html {
     scroll-behavior: smooth;
 }
+
+       * Newsletter Modal Styles */
+.newsletter-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease;
+}
+
+.newsletter-modal-content {
+    position: relative;
+    background: linear-gradient(135deg, var(--bg-secondary), #1f1f2f);
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    margin: 10vh auto;
+    box-shadow: 0 0 30px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    animation: slideInUp 0.4s ease-out;
+}
+
+.newsletter-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--text-secondary);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.newsletter-close:hover {
+    color: var(--accent-color);
+}
+
+.newsletter-header {
+    background: linear-gradient(135deg, var(--accent-color), #6a0dad);
+    padding: 20px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    text-align: center;
+}
+
+.newsletter-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.newsletter-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.newsletter-body p {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.newsletter-input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(30, 30, 40, 0.8);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.newsletter-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--shadow-color);
+    outline: none;
+}
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.8rem;
+    position: absolute;
+    left: 0;
+    bottom: -18px;
+    display: none;
+}
+
+.form-options {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(30, 30, 40, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    border-color: var(--accent-color);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.newsletter-submit {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--accent-color), #6a0dad);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.newsletter-submit:hover {
+    background: linear-gradient(135deg, var(--accent-hover), #8a4dff);
+}
+
+.newsletter-footer {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.newsletter-later {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.newsletter-later:hover {
+    color: var(--accent-color);
+}
+
+.newsletter-success {
+    display: none;
+    color: var(--success-color);
+    font-weight: bold;
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+    .newsletter-modal-content {
+        width: 95%;
+        margin: 5vh auto;
+    }
+    
+    .newsletter-header h2 {
+        font-size: 1.3rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -883,6 +1117,43 @@ html {
             </div>
         </div>
     </section>
+
+   <!-- Newsletter Subscription Modal -->
+<div class="newsletter-modal" id="newsletter-modal">
+    <div class="newsletter-modal-content">
+        <span class="newsletter-close">&times;</span>
+        <div class="newsletter-header">
+            <h2>Join the InfinityGearz Community!</h2>
+        </div>
+        <div class="newsletter-body">
+            <p>Subscribe to our newsletter and get exclusive deals, tech news, and early access to our latest products.</p>
+            <form id="newsletter-form">
+                <div class="form-group">
+                    <input type="text" id="newsletter-name" class="newsletter-input" placeholder="Your Name" required>
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="newsletter-email" class="newsletter-input" placeholder="Your Email" required>
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="newsletter-consent" required>
+                        <span class="checkmark"></span>
+                        I agree to receive promotional emails
+                    </label>
+                </div>
+                <button type="submit" class="newsletter-submit">Subscribe Now</button>
+            </form>
+            <div class="newsletter-success" id="newsletter-success">
+                <p>Thank you for subscribing! 🎉</p>
+            </div>
+        </div>
+        <div class="newsletter-footer">
+            <button id="newsletter-maybe-later" class="newsletter-later">Maybe Later</button>
+        </div>
+    </div>
+</div>
 
     <!-- Footer -->
     <footer>
@@ -1158,6 +1429,135 @@ html {
             });
         });
         </script>
+
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Modal elements
+    const modal = document.getElementById('newsletter-modal');
+    const closeBtn = document.querySelector('.newsletter-close');
+    const maybeLaterBtn = document.getElementById('newsletter-maybe-later');
+    const newsletterForm = document.getElementById('newsletter-form');
+    const nameInput = document.getElementById('newsletter-name');
+    const emailInput = document.getElementById('newsletter-email');
+    const consentCheckbox = document.getElementById('newsletter-consent');
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
+    const successMessage = document.getElementById('newsletter-success');
+    
+    // Check if user has previously dismissed the modal
+    const hasSeenModal = localStorage.getItem('infinitygearz_modal_seen');
+    
+    // Show modal after 3 seconds if user hasn't seen it before
+    if (!hasSeenModal) {
+        setTimeout(() => {
+            modal.style.display = 'block';
+        }, 3000);
+    }
+    
+    // Close modal functions
+    function closeModal() {
+        modal.style.display = 'none';
+        localStorage.setItem('infinitygearz_modal_seen', 'true');
+    }
+    
+    // Event listeners for closing the modal
+    closeBtn.addEventListener('click', closeModal);
+    maybeLaterBtn.addEventListener('click', closeModal);
+    
+    // Close the modal when clicking outside of it
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Form validation
+    function validateName() {
+        if (nameInput.value.trim() === '') {
+            nameError.textContent = 'Please enter your name';
+            nameError.style.display = 'block';
+            return false;
+        } else if (nameInput.value.trim().length < 2) {
+            nameError.textContent = 'Name must be at least 2 characters';
+            nameError.style.display = 'block';
+            return false;
+        } else {
+            nameError.style.display = 'none';
+            return true;
+        }
+    }
+    
+    function validateEmail() {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailInput.value.trim() === '') {
+            emailError.textContent = 'Please enter your email';
+            emailError.style.display = 'block';
+            return false;
+        } else if (!emailPattern.test(emailInput.value.trim())) {
+            emailError.textContent = 'Please enter a valid email address';
+            emailError.style.display = 'block';
+            return false;
+        } else {
+            emailError.style.display = 'none';
+            return true;
+        }
+    }
+    
+    // Validation on input
+    nameInput.addEventListener('input', validateName);
+    emailInput.addEventListener('input', validateEmail);
+    
+    // Form submission
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const isNameValid = validateName();
+        const isEmailValid = validateEmail();
+        
+        if (isNameValid && isEmailValid) {
+            // Form is valid, handle submission
+            // Here you would typically send this data to your server
+            console.log('Form submitted:', {
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim()
+            });
+            
+            // Show success message and hide form
+            newsletterForm.style.display = 'none';
+            successMessage.style.display = 'block';
+            
+            // Close the modal after 3 seconds of showing success
+            setTimeout(() => {
+                closeModal();
+                
+                // Reset form for next time
+                setTimeout(() => {
+                    newsletterForm.reset();
+                    newsletterForm.style.display = 'block';
+                    successMessage.style.display = 'none';
+                }, 1000);
+                
+            }, 3000);
+        }
+    });
+    
+    // Reset modal seen status after 7 days (for testing, set to a shorter period if needed)
+    const lastSeen = localStorage.getItem('infinitygearz_modal_timestamp');
+    const now = new Date().getTime();
+    
+    if (lastSeen) {
+        const daysSinceLastSeen = (now - parseInt(lastSeen)) / (1000 * 60 * 60 * 24);
+        if (daysSinceLastSeen > 7) {
+            localStorage.removeItem('infinitygearz_modal_seen');
+        }
+    }
+    
+    // Update timestamp when modal is shown
+    if (!hasSeenModal) {
+        localStorage.setItem('infinitygearz_modal_timestamp', now.toString());
+    }
+});
+</script>
    
 </body>
 </html>
