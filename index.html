@@ -99,10 +99,6 @@ nav ul li a:hover {
     font-size: 0.75rem;
 }
 
-nav ul li a:hover, nav ul li a.active {
-            color: var(--accent-color);
-        }
-
 /* Hero Section */
 .hero {
     height: 60vh;
@@ -714,8 +710,7 @@ footer {
 html {
     scroll-behavior: smooth;
 }
-
-       * Newsletter Modal Styles */
+/* Newsletter Modal Styles */
 .newsletter-modal {
     display: none;
     position: fixed;
@@ -948,7 +943,10 @@ html {
         font-size: 1.3rem;
     }
 }
-    </style>
+
+
+
+</style>
 </head>
 <body>
    
@@ -975,21 +973,21 @@ html {
         <button id="prev-slide" class="slide-nav-btn prev">&#10094;</button>
         <button id="next-slide" class="slide-nav-btn next">&#10095;</button>
 
-        <div class="slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(DALL·E\ 2025-03-27\ 11.40.26\ -\ A\ high-end\ gaming\ hardware\ setup\ with\ a\ bardic\ fantasy\ theme\,\ featuring\ RGB\ lights\,\ now\ with\ additional\ gaming\ accessories.\ The\ scene\ includes\ a\ power.webp);">
+        <div class="slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('DALL·E\ 2025-03-27\ 11.33.10\ -\ A\ high-end\ gaming\ hardware\ setup\ with\ a\ bardic\ fantasy\ theme\,\ featuring\ RGB\ lights\,\ now\ with\ additional\ gaming\ accessories.\ The\ scene\ includes\ a\ power.webp');">
             <div class="slide-content">
                 <h1>Welcome to InfinityGearz</h1>
                 <p>Find the best products at the best prices. Shop now and enjoy free shipping on all orders!</p>
                 <a href="products.html" class="cta-button">Shop Now</a>
             </div>
         </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('deal.jpeg');">
+        <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1600/901');">
             <div class="slide-content">
                 <h1>Exclusive Deals</h1>
                 <p>Discover amazing discounts on top brands. Limited time offers available!</p>
                 <a href="products.html" class="cta-button">Shop Deals</a>
             </div>
         </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(new.jpeg);">
+        <div class="slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1600/902');">
             <div class="slide-content">
                 <h1>New Arrivals</h1>
                 <p>Check out our latest collection of trendy and innovative products.</p>
@@ -1013,19 +1011,19 @@ html {
         </div>
             <div class="categories">
                 <div class="category-card">
-                    <img src="pre.jpeg"class="product-img">
-                    <div class="category-name"><a href="comming soon.html">Pre Build PC</div></a>
+                    <img src="#"class="product-img">
+                    <div class="category-name"><a href="">Pre Build PC</div></a>
                 </div>
                 <div class="category-card">
-                    <img src="gpu.jpeg"class="product-img">
+                    <img src="#"class="product-img">
                     <div class="category-name"><a href="comming soon.html">Graphic Cards</div></a>
                 </div>
                 <div class="category-card">
-                    <img src="laptop.jpeg"class="product-img">
+                    <img src="#"class="product-img">
                     <div class="category-name"><a href="comming soon.html">Laptop</div></a>
                 </div>
                 <div class="category-card">
-                    <img src="mabord.jpeg"class="product-img">
+                    <img src="#"class="product-img">
                     <div class="category-name"><a href="comming soon.html">Motherboard</div></a>
                 </div>
             </div>
@@ -1038,10 +1036,9 @@ html {
         <div class="product-grid">
             <!-- Product 1 -->
             <div class="product-card" data-price="99.99" data-name="Premium Headphones">
-                <img src="ChatGPT Image Mar 28, 2025, 07_29_34 PM.png" alt="Premium Headphones" class="product-image">
+                <img src="/api/placeholder/400/300" alt="Premium Headphones" class="product-image">
                 <div class="product-info">
-                    <a href="headphone page.html">
-                    <h3 class="product-title">Premium Headphones</h3></a>
+                    <h3 class="product-title">Premium Headphones</h3>
                                        <p class="product-price">₹3000</p>
                     <button class="add-to-cart" data-id="1" data-name="Premium Headphones" data-price="3000" data-image="/api/placeholder/400/300">Add to Cart</button>
                 </div>
@@ -1049,10 +1046,9 @@ html {
             
             <!-- Product 2 -->
             <div class="product-card">
-                <img src="mouse.jpeg" alt="Product 2" class="product-image">
+                <img src="/api/placeholder/400/300" alt="Product 2" class="product-image">
                 <div class="product-info">
-                    <a href="Mouse page.html">
-                    <h3 class="product-title">Wireless Mouse</h3></a>
+                    <h3 class="product-title">Wireless Mouse</h3>
                     <p class="product-price">₹2300</p>
                     <button class="add-to-cart" data-id="2" data-name="Wireless Mouse" data-price="2300" data-image="/api/placeholder/400/300">Add to Cart</button>
                 </div>
@@ -1060,10 +1056,9 @@ html {
             
             <!-- Product 3 -->
             <div class="product-card">
-                <img src="watch.jpeg" alt="Product 3" class="product-image">
+                <img src="/api/placeholder/400/300" alt="Product 3" class="product-image">
                 <div class="product-info">
-                    <a href="watch page.html">
-                    <h3 class="product-title">Smart Watch</h3></a>
+                    <h3 class="product-title">Smart Watch</h3>
                     <p class="product-price">₹2100</p>
                     <button class="add-to-cart" data-id="3" data-name="Smart Watch" data-price="2100" data-image="/api/placeholder/400/300">Add to Cart</button>
                 </div>
@@ -1078,47 +1073,47 @@ html {
         <div class="content-cards">
             <div class="content-card">
                 <div class="content-card-image">
-                    <img src="Top-tech-trends-2025-Generative-AI.webp" alt="Tech Trends">
+                    <img src="/api/placeholder/400/250" alt="Tech Trends">
                 </div>
                 <div class="content-card-content">
                     <h3 class="content-card-title">Top Tech Trends of 2025</h3>
                     <p class="content-card-excerpt">Discover the cutting-edge technologies reshaping our digital landscape this year.</p>
                     <div class="content-card-footer">
                         <span class="content-card-date">March 15, 2025</span>
-                        <a href="https://www.capgemini.com/insights/research-library/top-tech-trends-2025/" class="content-card-link">Read More</a>
+                        <a href="#" class="content-card-link">Read More</a>
                     </div>
                 </div>
             </div>
             <div class="content-card">
                 <div class="content-card-image">
-                    <img src="pexels-pixabay-356056.webp" alt="Buying Guide">
+                    <img src="/api/placeholder/400/250" alt="Buying Guide">
                 </div>
                 <div class="content-card-content">
                     <h3 class="content-card-title">Ultimate Gadget Buying Guide</h3>
                     <p class="content-card-excerpt">Expert tips to help you choose the perfect tech companion for your needs.</p>
                     <div class="content-card-footer">
                         <span class="content-card-date">February 28, 2025</span>
-                        <a href="https://successknocks.com/gadgets/" class="content-card-link">Read More</a>
+                        <a href="#" class="content-card-link">Read More</a>
                     </div>
                 </div>
             </div>
             <div class="content-card">
                 <div class="content-card-image">
-                    <img src="C_012025_Tech-trends-2025-imagery_Tech-sustainability-web-1.png" alt="Sustainability">
+                    <img src="/api/placeholder/400/250" alt="Sustainability">
                 </div>
                 <div class="content-card-content">
                     <h3 class="content-card-title">Tech and Sustainability</h3>
                     <p class="content-card-excerpt">How innovative technologies are driving environmental conservation.</p>
                     <div class="content-card-footer">
                         <span class="content-card-date">January 10, 2025</span>
-                        <a href="https://pyramidci.com/blog/technology-trends-2025-trend-9-sustainability-becomes-a-priority/" class="content-card-link">Read More</a>
+                        <a href="#" class="content-card-link">Read More</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <!-- Newsletter Subscription Modal -->
+<!-- Newsletter Subscription Modal -->
 <div class="newsletter-modal" id="newsletter-modal">
     <div class="newsletter-modal-content">
         <span class="newsletter-close">&times;</span>
@@ -1430,134 +1425,141 @@ html {
         });
         </script>
 
-   <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Modal elements
-    const modal = document.getElementById('newsletter-modal');
-    const closeBtn = document.querySelector('.newsletter-close');
-    const maybeLaterBtn = document.getElementById('newsletter-maybe-later');
-    const newsletterForm = document.getElementById('newsletter-form');
-    const nameInput = document.getElementById('newsletter-name');
-    const emailInput = document.getElementById('newsletter-email');
-    const consentCheckbox = document.getElementById('newsletter-consent');
-    const nameError = document.getElementById('name-error');
-    const emailError = document.getElementById('email-error');
-    const successMessage = document.getElementById('newsletter-success');
-    
-    // Check if user has previously dismissed the modal
-    const hasSeenModal = localStorage.getItem('infinitygearz_modal_seen');
-    
-    // Show modal after 3 seconds if user hasn't seen it before
-    if (!hasSeenModal) {
-        setTimeout(() => {
-            modal.style.display = 'block';
-        }, 3000);
-    }
-    
-    // Close modal functions
-    function closeModal() {
-        modal.style.display = 'none';
-        localStorage.setItem('infinitygearz_modal_seen', 'true');
-    }
-    
-    // Event listeners for closing the modal
-    closeBtn.addEventListener('click', closeModal);
-    maybeLaterBtn.addEventListener('click', closeModal);
-    
-    // Close the modal when clicking outside of it
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-    
-    // Form validation
-    function validateName() {
-        if (nameInput.value.trim() === '') {
-            nameError.textContent = 'Please enter your name';
-            nameError.style.display = 'block';
-            return false;
-        } else if (nameInput.value.trim().length < 2) {
-            nameError.textContent = 'Name must be at least 2 characters';
-            nameError.style.display = 'block';
-            return false;
-        } else {
-            nameError.style.display = 'none';
-            return true;
-        }
-    }
-    
-    function validateEmail() {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (emailInput.value.trim() === '') {
-            emailError.textContent = 'Please enter your email';
-            emailError.style.display = 'block';
-            return false;
-        } else if (!emailPattern.test(emailInput.value.trim())) {
-            emailError.textContent = 'Please enter a valid email address';
-            emailError.style.display = 'block';
-            return false;
-        } else {
-            emailError.style.display = 'none';
-            return true;
-        }
-    }
-    
-    // Validation on input
-    nameInput.addEventListener('input', validateName);
-    emailInput.addEventListener('input', validateEmail);
-    
-    // Form submission
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Modal elements
+        const modal = document.getElementById('newsletter-modal');
+        const closeBtn = document.querySelector('.newsletter-close');
+        const maybeLaterBtn = document.getElementById('newsletter-maybe-later');
+        const newsletterForm = document.getElementById('newsletter-form');
+        const nameInput = document.getElementById('newsletter-name');
+        const emailInput = document.getElementById('newsletter-email');
+        const consentCheckbox = document.getElementById('newsletter-consent');
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const successMessage = document.getElementById('newsletter-success');
         
-        const isNameValid = validateName();
-        const isEmailValid = validateEmail();
+        // Check if user has previously dismissed the modal
+        const hasSeenModal = localStorage.getItem('infinitygearz_modal_seen');
         
-        if (isNameValid && isEmailValid) {
-            // Form is valid, handle submission
-            // Here you would typically send this data to your server
-            console.log('Form submitted:', {
-                name: nameInput.value.trim(),
-                email: emailInput.value.trim()
-            });
-            
-            // Show success message and hide form
-            newsletterForm.style.display = 'none';
-            successMessage.style.display = 'block';
-            
-            // Close the modal after 3 seconds of showing success
+        // Show modal after 3 seconds if user hasn't seen it before
+        if (!hasSeenModal) {
             setTimeout(() => {
-                closeModal();
-                
-                // Reset form for next time
-                setTimeout(() => {
-                    newsletterForm.reset();
-                    newsletterForm.style.display = 'block';
-                    successMessage.style.display = 'none';
-                }, 1000);
-                
+                modal.style.display = 'block';
             }, 3000);
         }
-    });
-    
-    // Reset modal seen status after 7 days (for testing, set to a shorter period if needed)
-    const lastSeen = localStorage.getItem('infinitygearz_modal_timestamp');
-    const now = new Date().getTime();
-    
-    if (lastSeen) {
-        const daysSinceLastSeen = (now - parseInt(lastSeen)) / (1000 * 60 * 60 * 24);
-        if (daysSinceLastSeen > 7) {
-            localStorage.removeItem('infinitygearz_modal_seen');
+        
+        // Close modal functions
+        function closeModal() {
+            modal.style.display = 'none';
+            // Store that user has seen the modal
+            localStorage.setItem('infinitygearz_modal_seen', 'true');
         }
-    }
-    
-    // Update timestamp when modal is shown
-    if (!hasSeenModal) {
-        localStorage.setItem('infinitygearz_modal_timestamp', now.toString());
-    }
-});
-</script>
+        
+        // Event listeners for closing the modal
+        closeBtn.addEventListener('click', closeModal);
+        maybeLaterBtn.addEventListener('click', closeModal);
+        
+        // Close the modal when clicking outside of it
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Form validation
+        function validateName() {
+            if (nameInput.value.trim() === '') {
+                nameError.textContent = 'Please enter your name';
+                nameError.style.display = 'block';
+                return false;
+            } else if (nameInput.value.trim().length < 2) {
+                nameError.textContent = 'Name must be at least 2 characters';
+                nameError.style.display = 'block';
+                return false;
+            } else {
+                nameError.style.display = 'none';
+                return true;
+            }
+        }
+        
+        function validateEmail() {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailInput.value.trim() === '') {
+                emailError.textContent = 'Please enter your email';
+                emailError.style.display = 'block';
+                return false;
+            } else if (!emailPattern.test(emailInput.value.trim())) {
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.style.display = 'block';
+                return false;
+            } else {
+                emailError.style.display = 'none';
+                return true;
+            }
+        }
+        
+        // Input validation on blur for better user experience
+        nameInput.addEventListener('blur', validateName);
+        emailInput.addEventListener('blur', validateEmail);
+        
+        // Clear error messages when user starts typing
+        nameInput.addEventListener('input', function() {
+            if (nameInput.value.trim().length > 0) {
+                nameError.style.display = 'none';
+            }
+        });
+        
+        emailInput.addEventListener('input', function() {
+            if (emailInput.value.trim().length > 0) {
+                emailError.style.display = 'none';
+            }
+        });
+        
+        // Form submission
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isConsentChecked = consentCheckbox.checked;
+            
+            if (!isConsentChecked) {
+                // Alert for consent checkbox
+                alert('Please agree to receive promotional emails');
+                return;
+            }
+            
+            if (isNameValid && isEmailValid && isConsentChecked) {
+                // Form is valid, handle submission
+                // Here you would typically send this data to your server
+                console.log('Form submitted:', {
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim()
+                });
+                
+                // Show success message and hide form
+                newsletterForm.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Close the modal after 3 seconds of showing success
+                setTimeout(() => {
+                    closeModal();
+                    
+                    // Reset form for next time (after modal is closed)
+                    setTimeout(() => {
+                        newsletterForm.reset();
+                        newsletterForm.style.display = 'block';
+                        successMessage.style.display = 'none';
+                    }, 500);
+                    
+                }, 3000);
+            }
+        });
+        
+      });
+    </script>
    
 </body>
 </html>
